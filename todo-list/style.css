@@ -1,0 +1,46 @@
+/* 
+  TODO: 스타일을 자유롭게 꾸며보세요!
+  
+  힌트:
+  - 전체 레이아웃: flexbox 또는 grid
+  - 컨테이너: max-width, margin: auto
+  - 입력창: padding, border-radius
+  - 버튼: cursor: pointer, hover 효과
+  - 완료된 항목: text-decoration: line-through
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#form-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 20%;
+    min-width: 80%;
+    background-color: antiquewhite;
+    /* TODO: 배경색이나 그라데이션을 추가해보세요 */
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-btn {
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    background-color: dimgray;
+    border-radius: 10px;
+    color: white;
+    border: none;
+}
+
+
+/* TODO: 나머지 스타일을 추가해보세요! */
