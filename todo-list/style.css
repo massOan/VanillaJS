@@ -1,46 +1,347 @@
-/* 
-  TODO: 스타일을 자유롭게 꾸며보세요!
-  
-  힌트:
-  - 전체 레이아웃: flexbox 또는 grid
-  - 컨테이너: max-width, margin: auto
-  - 입력창: padding, border-radius
-  - 버튼: cursor: pointer, hover 효과
-  - 완료된 항목: text-decoration: line-through
-*/
+/* ==========================================
+   🎨 바닐라 JS 기본 디자인 시스템
+   깔끔하고 재사용 가능한 단색 스타일
+   ========================================== */
 
+/* -----------------------------------------
+   1. CSS 변수 (색상 팔레트)
+   ----------------------------------------- */
+:root {
+    /* 메인 색상 */
+    --color-primary: #4a5568;
+    /* 차분한 회색-파랑 */
+    --color-primary-light: #718096;
+    --color-primary-dark: #2d3748;
+
+    /* 배경색 */
+    --color-bg: #f7fafc;
+    /* 밝은 회백색 */
+    --color-bg-card: #ffffff;
+    --color-bg-hover: #edf2f7;
+
+    /* 텍스트 색상 */
+    --color-text: #2d3748;
+    --color-text-light: #718096;
+    --color-text-muted: #a0aec0;
+
+    /* 테두리 색상 */
+    --color-border: #e2e8f0;
+    --color-border-focus: #a0aec0;
+
+    /* 상태 색상 */
+    --color-success: #48bb78;
+    --color-danger: #e53e3e;
+    --color-warning: #ed8936;
+
+    /* 간격 */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* 테두리 반경 */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* 그림자 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* 트랜지션 */
+    --transition: 0.2s ease;
+}
+
+/* -----------------------------------------
+   2. 기본 리셋 & 타이포그래피
+   ----------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Pretendard', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+/* -----------------------------------------
+   3. 레이아웃 컴포넌트
+   ----------------------------------------- */
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* -----------------------------------------
+   4. 버튼 스타일
+   ----------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--color-bg-hover);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-border);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c53030;
+}
+
+.btn-sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.75rem;
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+}
+
+/* -----------------------------------------
+   5. 입력창 스타일
+   ----------------------------------------- */
+.input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-bg-card);
+    transition: all var(--transition);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.1);
+}
+
+.input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* -----------------------------------------
+   6. 리스트 스타일
+   ----------------------------------------- */
+.list {
+    list-style: none;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+}
+
+.list-item:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.list-item+.list-item {
+    margin-top: var(--spacing-sm);
+}
+
+.list-item.completed {
+    opacity: 0.6;
+}
+
+.list-item.completed .list-item-text {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.list-item-text {
+    flex: 1;
+}
+
+/* -----------------------------------------
+   7. 체크박스 스타일
+   ----------------------------------------- */
+.checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* -----------------------------------------
+   8. 유틸리티 클래스
+   ----------------------------------------- */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.mt-sm {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+    margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}
+
+.mb-sm {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* -----------------------------------------
+   9. TODO 앱 전용 스타일 (기존 호환)
+   ----------------------------------------- */
 #form-body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 20%;
-    min-width: 80%;
-    background-color: antiquewhite;
-    /* TODO: 배경색이나 그라데이션을 추가해보세요 */
-}
-
-li {
-    display: flex;
-    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 #add-btn {
     cursor: pointer;
     height: 40px;
-    width: 100px;
-    background-color: dimgray;
-    border-radius: 10px;
+    padding: 0 var(--spacing-lg);
+    background-color: var(--color-primary);
+    border-radius: var(--radius-md);
     color: white;
     border: none;
+    font-weight: 500;
+    transition: all var(--transition);
 }
 
+#add-btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
 
-/* TODO: 나머지 스타일을 추가해보세요! */
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+li:hover {
+    background-color: var(--color-bg-hover);
+}
