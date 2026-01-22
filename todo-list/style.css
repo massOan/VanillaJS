@@ -204,6 +204,22 @@ h4 {
     transition: all var(--transition);
 }
 
+.tab {
+    width: 60px;
+    height: 36px;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+}
+
+#spacer {
+    height: 16px;
+}
+
+
 .input:focus {
     outline: none;
     border-color: var(--color-border-focus);
@@ -340,6 +356,10 @@ li {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-sm);
+}
+
+#orientation-tab {
+    display: inline-block;
 }
 
 li:hover {
